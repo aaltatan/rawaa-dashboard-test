@@ -6,6 +6,7 @@
 }
 
 :root {
+  /* colors */
   --bg-h: 223;
   --bg-s: 13%;
   --bg-l: 22%;
@@ -43,6 +44,7 @@ aside {
     gap: 1rem;
     color: white;
     margin-block: 1em;
+    text-transform: capitalize;
   }
 
   & .aside__links {
@@ -119,6 +121,8 @@ aside {
 
   & .navbar__search {
     position: relative;
+    flex-grow: 1;
+    max-width: 450px;
   }
   & .navbar__search svg {
     position: absolute;
@@ -135,6 +139,7 @@ aside {
     outline: none;
     padding: .75em 1.25em;
     color: white;
+    width: 100%;
     background-color: hsl(var(--primary-h), var(--primary-s), var(--primary-l));
     transition-duration: 150ms;
   }
@@ -142,6 +147,91 @@ aside {
     --primary-l: 10%;
     box-shadow: 0 0 6px hsl(var(--accent-h), var(--accent-s), var(--accent-l));
   }
+
+  & .navbar__btns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5em;
+  }
+}
+
+.context {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  position: relative;
+  border-radius: 8px;
+  padding: .5em 1em;
+
+  &:hover, &:focus {
+    background-color: hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+  }
+
+  & .context__avatar {
+    background-color: hsl(var(--text-h), var(--text-s), var(--text-l));
+    border-radius: 8px;
+    width: 2.25rem;
+    overflow: hidden;
+  }
+
+  & .context__avatar img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+  }
+
+  & .context__title {
+    color: white;
+    font-weight: 500;
+    font-size: 14px;
+    text-transform: capitalize;
+  }
+
+  &:hover .context__list {
+    transform: scale(1);
+  }
+
+  & .context__list {
+    position: absolute;
+    top: calc(100% + .25rem);
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    background-color: hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+    transform: scale(0);
+    transform-origin: top left;
+    transition-duration: 150ms;
+    list-style: none;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  & .context__list a {
+    display: block;
+    padding: .5em 1em;
+    text-decoration: none;
+    text-transform: capitalize;
+    text-align: center;
+    transition-duration: 150ms;
+    color: hsl(var(--text-h), var(--text-s), var(--text-l));
+  }
+  & .context__list a:hover {
+    --primary-l: 8%;
+    background-color: hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+    color: white;
+  }
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1em;
+}
+.card--1\/1 {
+  column-span: 2;
 }
 
 .btn {
